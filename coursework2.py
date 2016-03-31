@@ -93,7 +93,7 @@ plt.scatter(newX4, newY4, color = 'r')
 # QUESTION 2                                               #
 ############################################################
 
-bins = 300
+bins = 200
 buckets1 = [0] * bins
 buckets2 = [0] * bins
 buckets3 = [0] * bins
@@ -169,7 +169,7 @@ plt.bar(delta4, buckets4, deltaT4)
 # QUESTION 3                                               #
 ############################################################
 
-bins = 101
+bins = 200
 buckets12 = [0] * bins
 buckets13 = [0] * bins
 buckets14 = [0] * bins
