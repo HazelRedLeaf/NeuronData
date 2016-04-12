@@ -76,17 +76,29 @@ for n4 in neuron[3]:
 
 # plot the results
 plt.figure(1)
+plt.title("Neuron 1")
+plt.xlabel("X axis of the maze")
+plt.ylabel("Y axis of the maze")
 plt.scatter(newX1, newY1, color = 'b')
-#plt.show()
+plt.show()
 plt.figure(2)
+plt.title("Neuron 2")
+plt.xlabel("X axis of the maze")
+plt.ylabel("Y axis of the maze")
 plt.scatter(newX2, newY2, color = 'c')
-#plt.show()
+plt.show()
 plt.figure(3)
+plt.title("Neuron 3")
+plt.xlabel("X axis of the maze")
+plt.ylabel("Y axis of the maze")
 plt.scatter(newX3, newY3, color = 'g')
-#plt.show()
+plt.show()
 plt.figure(4)
+plt.title("Neuron 4")
+plt.xlabel("X axis of the maze")
+plt.ylabel("Y axis of the maze")
 plt.scatter(newX4, newY4, color = 'r')
-#plt.show()
+plt.show()
 
 
 ############################################################
@@ -262,3 +274,7 @@ plt.bar(delta24, buckets24, deltaT24)
 plt.figure(14)
 plt.bar(delta34, buckets34, deltaT34)
 plt.show()
+
+############################################################
+# QUESTION 4                                               #
+############################################################
