@@ -325,68 +325,136 @@ newX11 = []
 newX12 = []
 newY11 = []
 newY12 = []
+sum1 = 0
+sum1sq = 0
+count1 = 0
+sum2 = 0
+sum2sq = 0
+count2 = 0
 
 for n1 in neuron[0]:
 	for i in range(len(time)):
 		if n1 <= time[i]:
-			if x[i] < 150:
+			if x[i] < (max(x) - min(x))/2:
 				newX11.append(x[i])
 				newY11.append(y[i])
+				sum1 += n1
+				count1 += 1
+				sum1sq += n1*n1
 			else:
 				newX12.append(x[i])
 				newY12.append(y[i])
+				sum2 += n1
+				count2 += 1
+				sum2sq += n1*n1
 			break
+
+mew1 = float(sum1)/count1
+mew2 = float(sum2)/count2
+meow = math.sqrt(((sum1sq - float(sum1)*sum1/count1) / (count1 - 1) + (sum2sq - float(sum2)*sum2/count2) / (count2 - 1)) / 2)
+print "d' of neuron 1 =", (mew2-mew1)/meow
 
 # neuron 2
 newX21 = []
 newX22 = []
 newY21 = []
 newY22 = []
+sum1 = 0
+sum1sq = 0
+count1 = 0
+sum2 = 0
+sum2sq = 0
+count2 = 0
 
 for n2 in neuron[1]:
 	for i in range(len(time)):
 		if n2 <= time[i]:
-			if x[i] < 150:
+			if x[i] < (max(x) - min(x))/2:
 				newX21.append(x[i])
 				newY21.append(y[i])
+				sum1 += n2
+				count1 += 1
+				sum1sq += n2*n2
 			else:
 				newX22.append(x[i])
 				newY22.append(y[i])
+				sum2 += n2
+				count2 += 1
+				sum2sq += n2*n2
 			break
+
+mew1 = float(sum1)/count1
+mew2 = float(sum2)/count2
+meow = math.sqrt(((sum1sq - float(sum1)*sum1/count1) / (count1 - 1) + (sum2sq - float(sum2)*sum2/count2) / (count2 - 1)) / 2)
+print "d' of neuron 2 =", (mew2-mew1)/meow
 
 # neuron 3
 newX31 = []
 newX32 = []
 newY31 = []
 newY32 = []
+sum1 = 0
+sum1sq = 0
+count1 = 0
+sum2 = 0
+sum2sq = 0
+count2 = 0
 
 for n3 in neuron[2]:
 	for i in range(len(time)):
 		if n3 <= time[i]:
-			if x[i] < 150:
+			if x[i] < (max(x) - min(x))/2:
 				newX31.append(x[i])
 				newY31.append(y[i])
+				sum1 += n3
+				count1 += 1
+				sum1sq += n3*n3
 			else:
 				newX32.append(x[i])
 				newY32.append(y[i])
+				sum2 += n3
+				count2 += 1
+				sum2sq += n3*n3
 			break
+
+mew1 = float(sum1)/count1
+mew2 = float(sum2)/count2
+meow = math.sqrt(((sum1sq - float(sum1)*sum1/count1) / (count1 - 1) + (sum2sq - float(sum2)*sum2/count2) / (count2 - 1)) / 2)
+print "d' of neuron 3 =", (mew2-mew1)/meow
 
 # neuron 4
 newX41 = []
 newX42 = []
 newY41 = []
 newY42 = []
+sum1 = 0
+sum1sq = 0
+count1 = 0
+sum2 = 0
+sum2sq = 0
+count2 = 0
 
 for n4 in neuron[1]:
 	for i in range(len(time)):
 		if n4 <= time[i]:
-			if x[i] < 150:
+			if x[i] < (max(x) - min(x))/2:
 				newX41.append(x[i])
 				newY41.append(y[i])
+				sum1 += n4
+				count1 += 1
+				sum1sq += n4*n4
 			else:
 				newX42.append(x[i])
 				newY42.append(y[i])
+				sum2 += n4
+				count2 += 1
+				sum2sq += n4*n4
 			break
+
+mew1 = float(sum1)/count1
+mew2 = float(sum2)/count2
+meow = math.sqrt(((sum1sq - float(sum1)*sum1/count1) / (count1 - 1) + (sum2sq - float(sum2)*sum2/count2) / (count2 - 1)) / 2)
+print "d' of neuron 4 =", (mew2-mew1)/meow
 
 # plot the results
 plt.figure(19)
