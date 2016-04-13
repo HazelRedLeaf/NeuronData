@@ -100,7 +100,6 @@ plt.ylabel("Y axis of the maze")
 plt.scatter(newX4, newY4, color = 'r')
 plt.show()
 
-
 ############################################################
 # QUESTION 2                                               #
 ############################################################
@@ -164,17 +163,17 @@ for d in range(bins):
 	delta4.append(deltaT4*(d- bins/2))
 
 # plot the results
-plt.figure(5)
-plt.bar(delta1, buckets1, deltaT1)
+#plt.figure(5)
+#plt.bar(delta1, buckets1, deltaT1)
 #plt.show()
-plt.figure(6)
-plt.bar(delta2, buckets2, deltaT2)
+#plt.figure(6)
+#plt.bar(delta2, buckets2, deltaT2)
 #plt.show()
-plt.figure(7)
-plt.bar(delta3, buckets3, deltaT3)
+#plt.figure(7)
+#plt.bar(delta3, buckets3, deltaT3)
 #plt.show()
-plt.figure(8)
-plt.bar(delta4, buckets4, deltaT4)
+#plt.figure(8)
+#plt.bar(delta4, buckets4, deltaT4)
 #plt.show()
 
 ############################################################
@@ -278,3 +277,140 @@ plt.show()
 ############################################################
 # QUESTION 4                                               #
 ############################################################
+
+buckets1 = []
+buckets2 = []
+buckets3 = []
+buckets4 = []
+
+bucket_number = (43000000 - 32000000) / 10000
+
+for num in range(bucket_number):
+	buckets1.append(0)
+	buckets2.append(0)
+	buckets3.append(0)
+	buckets4.append(0)
+
+for n1 in neuron[0]:
+	buckets1[n1 / 10000 - 3200] += 1
+
+for n2 in neuron[1]:
+	buckets2[n2 / 10000 - 3200] += 1
+
+for n3 in neuron[2]:
+	buckets3[n3 / 10000 - 3200] += 1
+
+for n4 in neuron[3]:
+	buckets4[n4 / 10000 - 3200] += 1
+
+plt.figure(15)
+plt.plot(range(bucket_number), buckets1)
+plt.show()
+plt.figure(16)
+plt.plot(range(bucket_number), buckets2)
+plt.show()
+plt.figure(17)
+plt.plot(range(bucket_number), buckets3)
+plt.show()
+plt.figure(18)
+plt.plot(range(bucket_number), buckets4)
+plt.show()
+
+############################################################
+# QUESTION 5                                               #
+############################################################
+
+# neuron 1
+newX11 = []
+newX12 = []
+newY11 = []
+newY12 = []
+
+for n1 in neuron[0]:
+	for i in range(len(time)):
+		if n1 <= time[i]:
+			if x[i] < 150:
+				newX11.append(x[i])
+				newY11.append(y[i])
+			else:
+				newX12.append(x[i])
+				newY12.append(y[i])
+			break
+
+# neuron 2
+newX21 = []
+newX22 = []
+newY21 = []
+newY22 = []
+
+for n2 in neuron[1]:
+	for i in range(len(time)):
+		if n2 <= time[i]:
+			if x[i] < 150:
+				newX21.append(x[i])
+				newY21.append(y[i])
+			else:
+				newX22.append(x[i])
+				newY22.append(y[i])
+			break
+
+# neuron 3
+newX31 = []
+newX32 = []
+newY31 = []
+newY32 = []
+
+for n3 in neuron[2]:
+	for i in range(len(time)):
+		if n3 <= time[i]:
+			if x[i] < 150:
+				newX31.append(x[i])
+				newY31.append(y[i])
+			else:
+				newX32.append(x[i])
+				newY32.append(y[i])
+			break
+
+# neuron 4
+newX41 = []
+newX42 = []
+newY41 = []
+newY42 = []
+
+for n4 in neuron[1]:
+	for i in range(len(time)):
+		if n4 <= time[i]:
+			if x[i] < 150:
+				newX41.append(x[i])
+				newY41.append(y[i])
+			else:
+				newX42.append(x[i])
+				newY42.append(y[i])
+			break
+
+# plot the results
+plt.figure(19)
+plt.title("Neuron 1")
+plt.xlabel("X axis of the maze")
+plt.ylabel("Y axis of the maze")
+plt.scatter(newX11, newY11, color = 'b')
+plt.scatter(newX12, newY12, color = 'r')
+plt.figure(20)
+plt.title("Neuron 2")
+plt.xlabel("X axis of the maze")
+plt.ylabel("Y axis of the maze")
+plt.scatter(newX21, newY21, color = 'b')
+plt.scatter(newX22, newY22, color = 'r')
+plt.figure(21)
+plt.title("Neuron 3")
+plt.xlabel("X axis of the maze")
+plt.ylabel("Y axis of the maze")
+plt.scatter(newX31, newY31, color = 'b')
+plt.scatter(newX32, newY32, color = 'r')
+plt.figure(22)
+plt.title("Neuron 4")
+plt.xlabel("X axis of the maze")
+plt.ylabel("Y axis of the maze")
+plt.scatter(newX41, newY41, color = 'b')
+plt.scatter(newX42, newY42, color = 'r')
+plt.show()
