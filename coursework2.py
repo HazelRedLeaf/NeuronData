@@ -3,6 +3,8 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
+plt.rcParams['text.usetex'] = True
+
 # for loading neuron 1 - 4 and time
 neuron = []
 f = open("neuron1.csv")
@@ -37,6 +39,8 @@ newY1 = []
 for n1 in neuron[0]:
 	for i in range(len(time)):
 		if n1 <= time[i]:
+			if (x[i] < 0 or y[i] < 0):
+				continue
 			newX1.append(x[i])
 			newY1.append(y[i])
 			break
@@ -48,6 +52,8 @@ newY2 = []
 for n2 in neuron[1]:
 	for i in range(len(time)):
 		if n2 <= time[i]:
+			if x[i] <= 0 or y[i] <= 0:
+				continue
 			newX2.append(x[i])
 			newY2.append(y[i])
 			break
@@ -59,6 +65,8 @@ newY3 = []
 for n3 in neuron[2]:
 	for i in range(len(time)):
 		if n3 <= time[i]:
+			if x[i] < 0 or y[i] < 0:
+				continue
 			newX3.append(x[i])
 			newY3.append(y[i])
 			break
@@ -70,6 +78,8 @@ newY4 = []
 for n4 in neuron[3]:
 	for i in range(len(time)):
 		if n4 <= time[i]:
+			if x[i] <= 0 or y[i] <= 0:
+				continue
 			newX4.append(x[i])
 			newY4.append(y[i])
 			break
@@ -79,12 +89,14 @@ plt.figure(1)
 plt.title("Neuron 1")
 plt.xlabel("X axis of the maze")
 plt.ylabel("Y axis of the maze")
+plt.ylim([0,250])
 plt.scatter(newX1, newY1, color = 'b')
 plt.show()
 plt.figure(2)
 plt.title("Neuron 2")
 plt.xlabel("X axis of the maze")
 plt.ylabel("Y axis of the maze")
+plt.ylim([0,250])
 plt.scatter(newX2, newY2, color = 'c')
 plt.show()
 plt.figure(3)
@@ -163,18 +175,30 @@ for d in range(bins):
 	delta4.append(deltaT4*(d- bins/2))
 
 # plot the results
-#plt.figure(5)
-#plt.bar(delta1, buckets1, deltaT1)
-#plt.show()
-#plt.figure(6)
-#plt.bar(delta2, buckets2, deltaT2)
-#plt.show()
-#plt.figure(7)
-#plt.bar(delta3, buckets3, deltaT3)
-#plt.show()
-#plt.figure(8)
-#plt.bar(delta4, buckets4, deltaT4)
-#plt.show()
+plt.figure(5)
+plt.title("Auto-correlogram of neuron 1")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Frequency of delays between spikes withim the time period")
+plt.bar(delta1, buckets1, deltaT1)
+plt.show()
+plt.figure(6)
+plt.title("Auto-correlogram of neuron 2")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Frequency of delays between spikes withim the time period")
+plt.bar(delta2, buckets2, deltaT2)
+plt.show()
+plt.figure(7)
+plt.title("Auto-correlogram of neuron 3")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Frequency of delays between spikes withim the time period")
+plt.bar(delta3, buckets3, deltaT3)
+plt.show()
+plt.figure(8)
+plt.title("Auto-correlogram of neuron 4")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Frequency of delays between spikes withim the time period")
+plt.bar(delta4, buckets4, deltaT4)
+plt.show()
 
 ############################################################
 # QUESTION 3                                               #
@@ -261,16 +285,34 @@ for d in range(bins):
 	delta34.append(deltaT34*(d - bins/2))
 
 plt.figure(9)
+plt.title("Cross-correlogram of neurons 1 and 2")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Measure of similarity with a delay")
 plt.bar(delta12, buckets12, deltaT12)
 plt.figure(10)
+plt.title("Cross-correlogram of neurons 1 and 3")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Measure of similarity with a delay")
 plt.bar(delta13, buckets13, deltaT13)
 plt.figure(11)
+plt.title("Cross-correlogram of neurons 1 and 4")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Measure of similarity with a delay")
 plt.bar(delta14, buckets14, deltaT14)
 plt.figure(12)
+plt.title("Cross-correlogram of neurons 2 and 3")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Measure of similarity with a delay")
 plt.bar(delta23, buckets23, deltaT23)
 plt.figure(13)
+plt.title("Cross-correlogram of neurons 2 and 4")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Measure of similarity with a delay")
 plt.bar(delta24, buckets24, deltaT24)
 plt.figure(14)
+plt.title("Cross-correlogram of neurons 3 and 4")
+plt.xlabel(r'Time $(s \times 10^{-4})$')
+plt.ylabel("Measure of similarity with a delay")
 plt.bar(delta34, buckets34, deltaT34)
 plt.show()
 
@@ -304,15 +346,27 @@ for n4 in neuron[3]:
 	buckets4[n4 / 10000 - 3200] += 1
 
 plt.figure(15)
+plt.title("Firing rate of neuron 1")
+plt.xlabel(r"Time $(s)$")
+plt.ylabel(r'Firing Rate $(s^{-1})$')
 plt.plot(range(bucket_number), buckets1)
 plt.show()
 plt.figure(16)
+plt.title("Firing rate of neuron 2")
+plt.xlabel(r"Time $(s)$")
+plt.ylabel(r'Firing Rate $(s^{-1})$')
 plt.plot(range(bucket_number), buckets2)
 plt.show()
 plt.figure(17)
+plt.title("Firing rate of neuron 3")
+plt.xlabel(r"Time $(s)$")
+plt.ylabel(r'Firing Rate $(s^{-1})$')
 plt.plot(range(bucket_number), buckets3)
 plt.show()
 plt.figure(18)
+plt.title("Firing rate of neuron 4")
+plt.xlabel(r"Time $(s)$")
+plt.ylabel(r'Firing Rate $(s^{-1})$')
 plt.plot(range(bucket_number), buckets4)
 plt.show()
 
