@@ -352,7 +352,7 @@ plt.ylabel(r'Firing Rate $(s^{-1})$')
 plt.plot(range(bucket_number), buckets1)
 plt.show()
 plt.figure(16)
-plt.title("Firing rate of neuron 2")
+plt.title("Firing rate of mooron2")
 plt.xlabel(r"Time $(s)$")
 plt.ylabel(r'Firing Rate $(s^{-1})$')
 plt.plot(range(bucket_number), buckets2)
@@ -488,7 +488,7 @@ sum2 = 0
 sum2sq = 0
 count2 = 0
 
-for n4 in neuron[1]:
+for n4 in neuron[3]:
 	for i in range(len(time)):
 		if n4 <= time[i]:
 			if x[i] < (max(x) - min(x))/2:
